@@ -1,4 +1,4 @@
-# Software Testing
+# Software Testing 🧪
 
 These are software testing projects done during the course of my Software Testing class at SKCET. The projects are done using Selenium.
 
