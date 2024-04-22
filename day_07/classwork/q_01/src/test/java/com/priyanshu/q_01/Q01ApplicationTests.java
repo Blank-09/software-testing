@@ -1,78 +1,94 @@
 package com.priyanshu.q_01;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import java.time.Duration;
+import java.util.Set;
 
-@SpringBootTest
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
 class Q01ApplicationTests {
 
     WebDriver driver;
     Actions actions;
+    Wait<WebDriver> wait;
 
     @BeforeTest
-    public void beforeTest() {
-        driver = new ChromeDriver();
-        actions = new Actions(driver);
+    public void setup() {
+        this.driver = new ChromeDriver();
+        this.actions = new Actions(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     @Test
-    public void testingEconomicTimes() throws Exception {
+    public void testEconomicTimes() {
+        // Step 1
         driver.get("https://economictimes.indiatimes.com/et-now/results");
-        Thread.sleep(10000);
 
-        // move to mutual funds
-        driver.findElement(By.xpath("//nav[@id='topnav']/div[@data-ga-action='Mutual Funds']/a")).click();
-        Thread.sleep(10000);
+        // Step 2
+        WebElement link = wait.until(d -> d.findElement(By.linkText("Mutual Funds")));
+        link.click();
 
-        WebElement select = driver.findElement(By.id("amcSelection"));
-        actions.scrollToElement(select).perform();
+        // Step 3
+        WebElement amc = wait.until(d -> d.findElement(By.id("amcSelection")));
+        actions.scrollToElement(amc).perform();
 
-        // select.click();
-        // driver.findElement(By.xpath("//select[@id='amcSelection']/option[@value='8']")).click();
+        // Step 4
+        amc.click();
+        Select amcSelect = new Select(amc);
+        amcSelect.selectByVisibleText("Canara Robeco");
 
-        Select selectEle = new Select(select);
-        selectEle.selectByVisibleText("Canara Robeco");
-        Thread.sleep(3000);
+        // Step 5
+        WebElement scheme = wait.until(d -> d.findElement(By.id("schemenm")));
+        Select schemeSelect = new Select(scheme);
+        schemeSelect.selectByVisibleText("Canara Robeco Bluechip Equity Direct-G");
 
-        select = driver.findElement(By.id("schemenm"));
+        // Step 6
+        WebElement getDetailsLink = driver.findElement(By.id("getDetails"));
+        getDetailsLink.click();
 
-        // select.click();
-        // driver.findElement(By.xpath("//select[@id='schemenm']/option[@value='15765']")).click();
+        // Step 7
+        Set<String> handles = driver.getWindowHandles();
 
-        selectEle = new Select(select);
-        selectEle.selectByVisibleText("Canara Robeco Bluechip Equity Direct-G");
-        Thread.sleep(3000);
-
-        driver.findElement(By.xpath("//*[@id='getDetails']")).click();
-        Thread.sleep(5000);
-
-        // the above actions will create a new tab
-        String current_tab = driver.getWindowHandle(); // current tab
-        for (String s : driver.getWindowHandles()) {
-            if (!s.equals(current_tab)) {
-                // switches to newly opened tab
-                driver.switchTo().window(s);
+        // Switch to the new window
+        for (String handle : handles) {
+            if (!handle.equals(driver.getWindowHandle())) {
+                driver.switchTo().window(handle);
             }
         }
 
-        // set amount as 1000
-        driver.findElement(By.xpath("//*[@id='installment_amt']/li/span")).click();
-        driver.findElement(By.xpath("//*[@id='installment_amt']/li/ul/li[3]")).click();
+        // Step 8
+        WebElement investmentType = driver.findElement(By.id("installment_type"));
+        investmentType.click();
+        driver.findElement(By.cssSelector("[data-value=\"sip\"]")).click();
 
-        // set period as 3 years
-        driver.findElement(By.xpath("//*[@id='installment_period']/li/span")).click();
-        driver.findElement(By.xpath("//*[@id='installment_period']/li/ul/li[4]/span")).click();
+        WebElement investmentAmount = driver.findElement(By.id("installment_amt"));
+        investmentAmount.click();
+        driver.findElement(By.cssSelector("[data-value=\"1000\"]")).click();
 
-        // navigate to returns
-        driver.findElement(By.xpath("//*[@id=\"mfNav\"]/div/ul/li[2]")).click();
-        WebElement details = driver
-                .findElement(By.xpath("//*[@id='mfReturns']/div[2]/div[2]/ul/li[1]/table/tbody/tr[1]"));
+        WebElement investmentPeriod = driver.findElement(By.id("installment_period"));
+        investmentPeriod.click();
+        driver.findElement(By.cssSelector("[data-value=\"1095\"]")).click();
 
-        System.out.println(details.getText());
+        // Step 9
+        WebElement returns = driver.findElement(By.cssSelector("[data-offset=\"mfReturnsOffset\"]"));
+        returns.click();
+
+        // Step 10
+        WebElement annualizedReturnsRow = driver.findElement(By.cssSelector("#mfReturns table tbody tr"));
+        System.out.println(annualizedReturnsRow.getText());
     }
-    
+
     @AfterTest
-    public void afterTest() {
+    public void wrapUp() {
         driver.quit();
     }
 
