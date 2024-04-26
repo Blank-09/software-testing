@@ -2,7 +2,7 @@
 
 These are software testing projects done during the course of my Software Testing class at SKCET. The projects are done using Selenium.
 
-### Prerequirements
+## 🎯 Pre Requirements
 
 - Java 17 (or later)
 - Maven
