@@ -1,0 +1,23 @@
+2024-04-26 19:48:54.841 [main] INFO  com.priyanshu.AppTest - Setting up driver...
+2024-04-26 19:48:59.613 [main] INFO  com.priyanshu.AppTest - Maximizing window...
+2024-04-26 19:48:59.762 [main] INFO  com.priyanshu.AppTest - Driver setup complete.
+2024-04-26 19:48:59.766 [main] INFO  com.priyanshu.AppTest - Setting up Excel...
+2024-04-26 19:49:00.941 [main] INFO  com.priyanshu.AppTest - Excel setup complete.
+2024-04-26 19:49:00.943 [main] INFO  com.priyanshu.AppTest - Setting up report...
+2024-04-26 19:49:01.478 [main] INFO  com.priyanshu.AppTest - Report setup complete.
+2024-04-26 19:49:01.534 [main] INFO  com.priyanshu.AppTest - Starting testSearchBar...
+2024-04-26 19:49:01.534 [main] INFO  com.priyanshu.AppTest - Navigating to https://www.barnesandnoble.com/
+2024-04-26 19:49:11.952 [main] INFO  com.priyanshu.AppTest - Click on the “All” dropdown on the left side of the search bar and select “Books”.
+2024-04-26 19:49:13.413 [main] INFO  com.priyanshu.AppTest - On the search bar input the value "Chetan Bhagat".
+2024-04-26 19:49:14.119 [main] INFO  com.priyanshu.AppTest - Click on the search button.
+2024-04-26 19:49:20.403 [main] INFO  com.priyanshu.AppTest - Verify the search results contain the keyword "Chetan Bhagat" in it.
+2024-04-26 19:49:20.642 [main] INFO  com.priyanshu.AppTest - The keyword 'Chetan Bhagat' is found
+2024-04-26 19:49:20.643 [main] INFO  com.priyanshu.AppTest - Taking screenshot of ./src/screenshot/search
+2024-04-26 19:49:21.053 [main] INFO  com.priyanshu.AppTest - Screenshot taken.
+2024-04-26 19:49:21.054 [main] INFO  com.priyanshu.AppTest - testSearchBar complete.
+2024-04-26 19:49:21.063 [main] INFO  com.priyanshu.AppTest - Starting testAddToCart...
+2024-04-26 19:49:21.063 [main] INFO  com.priyanshu.AppTest - Navigating to https://www.barnesandnoble.com/
+2024-04-26 19:49:26.970 [main] INFO  com.priyanshu.AppTest - Hover over the Audiobooks. Under the Bestsellers section, click on the URL 'Audiobooks Top 100'.
+2024-04-26 19:49:36.599 [main] INFO  com.priyanshu.AppTest - Scroll down and click the 'ADD TO CART' button.
+2024-04-26 19:49:43.022 [main] INFO  com.priyanshu.AppTest - Wrapping up...
+2024-04-26 19:49:44.421 [main] INFO  com.priyanshu.AppTest - Wrap up complete.
