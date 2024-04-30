@@ -41,7 +41,7 @@ public class InfosysSpringboardAutomationApplication {
 
 		// Create a new instance of the BraveDriver
 		WebDriver driver = new BraveDriver(options);
-		Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(45)); // Increase the timeout if the internet is slow
+		Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(60)); // Increase the timeout if the internet is slow
 		
 		// Navigate to Infosys Springboard login page
 		System.out.println(Color.info("Navigating to " + INFOSYS_SPRINGBOARD_LOGIN_URL));

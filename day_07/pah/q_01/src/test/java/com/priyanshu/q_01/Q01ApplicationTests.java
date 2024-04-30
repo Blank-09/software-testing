@@ -44,7 +44,7 @@ class Q01ApplicationTests {
 
         // Step 5
         WebElement homeLoanEMI = wait.until(d -> d.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/a[15]")));
-        actions.scrollToElement(homeLoanEMI);
+        actions.scrollToElement(homeLoanEMI).perform();
         homeLoanEMI.click();
 
         // Step 6
