@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "email",
+    "type": "java.lang.String",
+    "description": "Your skcet portal 'email' here"
+  },
+  {
+    "name": "password",
+    "type": "java.lang.String",
+    "description": "Your skcet portal 'password' here"
+  }
+]}
